@@ -12,10 +12,13 @@ defmodule Corrector do
     top_suggestion = ""
     suggestion_length = length(Map.get(head, "suggestions"))
     if suggestion_length == 0 do
+      # No suggestions, so just use token...
       top_suggestion = Map.get(head, "token")
     else
-      temp = hd(Map.get(head, "suggestions"))
-      top_suggestion = Map.get(temp, "token")
+      top_suggestion = Map.get(
+                        # Take first suggestion
+                        hd(Map.get(head, "suggestions")),
+                        "token")
     end
     result = result <> top_suggestion
 
@@ -29,8 +32,6 @@ defmodule Corrector do
     if prev_start < len do
       result = result <> elem(String.split_at(text, prev_start),1)
     end
-
     result
   end
-
 end
