@@ -21,6 +21,8 @@ defmodule SpellCheckClient do
         Corrector.construct_correct_text(correction_map, input)
       {:ok, %HTTPoison.Response{status_code: 404}} ->
         IO.puts "Not found :("
+      {:ok, %HTTPoison.Response{status_code: 401}} ->
+        IO.puts "Invalid API key!"
       {:error, %HTTPoison.Error{reason: reason}} ->
         IO.inspect reason
     end
