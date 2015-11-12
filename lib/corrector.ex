@@ -6,7 +6,7 @@ defmodule Corrector do
     offset = Map.get(head, "offset")
 
     if offset > prev_start do
-      result = result <> String.slice(text, prev_start, offset-prev_start)
+      result = result <> String.slice(text, prev_start, offset - prev_start)
     end
 
     top_suggestion = ""
@@ -30,7 +30,7 @@ defmodule Corrector do
   def construct_correct_text([], text, prev_start, offset, result) do
     len = String.length(text)
     if prev_start < len do
-      result = result <> elem(String.split_at(text, prev_start),1)
+      result = result <> elem(String.split_at(text, prev_start), 1)
     end
     result
   end

@@ -26,6 +26,3 @@ defmodule SpellCheckClient do
     end
   end
 end
-
-HTTPSpellCheck.start
-IO.puts SpellCheckClient.check("This strimg is fine.")
