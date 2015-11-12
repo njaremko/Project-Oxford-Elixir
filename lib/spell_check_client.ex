@@ -19,10 +19,20 @@ defmodule SpellCheckClient do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         correction_map = Map.get(body, "spellingErrors")
         Corrector.construct_correct_text(correction_map, input)
-      {:ok, %HTTPoison.Response{status_code: 404}} ->
+      {:ok, %HTTPoison.Response{status_code: 400}} ->
         IO.puts "Not found :("
       {:ok, %HTTPoison.Response{status_code: 401}} ->
-        IO.puts "Invalid API key!"
+        message = Map.get(body, "message")
+        IO.puts message
+      {:ok, %HTTPoison.Response{status_code: 403}} ->
+        message = Map.get(body, "message")
+        IO.puts message
+      {:ok, %HTTPoison.Response{status_code: 404}} ->
+        message = Map.get(body, "message")
+        IO.puts message
+      {:ok, %HTTPoison.Response{status_code: 429}} ->
+        message = Map.get(body, "message")
+        IO.puts message
       {:error, %HTTPoison.Error{reason: reason}} ->
         IO.inspect reason
     end

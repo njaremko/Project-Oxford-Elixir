@@ -3,7 +3,7 @@ defmodule HTTPSpellCheck do
 
   @service_host "https://api.projectoxford.ai/text/v1.0/"
   @subscriptionKeyName :"ocp-apim-subscription-key"
-  @subscriptionKey #"your-api-key"
+  @subscriptionKey "48bd0fd158684414901caf5b74798605" #"your-api-key"
 
   def process_url(url) do
     @service_host  <> url
