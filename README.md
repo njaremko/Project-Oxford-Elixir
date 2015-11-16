@@ -8,7 +8,8 @@ https://www.projectoxford.ai/
 This project requires poison, and httpoison
 
 ## Install
-Copy the three files in lib/ into your lib/
+1. Copy the three files in lib/ into your lib/
+2. Change the API key in http_spell_check
 
 ## Usage
 ```
